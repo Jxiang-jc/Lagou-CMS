@@ -27,7 +27,13 @@ module.exports = {
         port: 3000,
         inline: true, // 自动刷新
         open: true, // 自动打开浏览器
-    },// 
+        proxy: { // 代理api请求到api server
+            '/api': {
+                target: 'http://localhost:9999',
+                changeOrigin: true
+            }
+        }
+    },
     plugins: [
         new webpack.BannerPlugin("这里是打包文件头部注释"),
         // 可以打包html文件 如果实现多页面开发的话，就需要使用多个 HtmlWebpackPlugin
