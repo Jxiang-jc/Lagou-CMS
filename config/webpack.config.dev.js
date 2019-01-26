@@ -6,8 +6,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 module.exports = {
     mode: 'development', // 打包模式：production，development，none
     entry: {
-        main: "./src/javascript/app.js",
-        index: "./src/javascript/admin.js"
+        main: ["./src/javascript/app.js"],
+        index: ["./src/javascript/admin.js"]
     },
     // 出口
     output: {
