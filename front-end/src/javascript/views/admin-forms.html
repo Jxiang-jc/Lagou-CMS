@@ -1,0 +1,51 @@
+
+
+
+<div class="register-box">
+    <div class="register-logo">
+        <a href="javascripts:void(0)"><b>拉勾网</b>管理系统</a>
+    </div>
+
+    {{ if type !== 'signin' }}
+    <div class="register-box-body">
+        <p class="login-box-msg">SignUp</p>
+
+        <form id="signup-form">
+            <div class="form-group has-feedback">
+                <input required type="text" name="username" class="form-control" placeholder="请输入用户名">
+            </div>        
+            <div class="form-group has-feedback">
+                <input required type="password" name="password" class="form-control" placeholder="请输入Password">
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" name="nickname" class="form-control" placeholder="请输入昵称">
+            </div>
+            <div class="row">
+                <button data-type="signin" type="button" class="btn btn-default  btn-flat pull-right switch-btn">SignIn</button>
+                <button type="submit" class="btn btn-primary  btn-flat pull-right">SignUp</button>
+            </div>
+        </form>
+
+    </div>
+    {{ else }}
+
+    <div class="register-box-body">
+        <p class="login-box-msg">SignIn</p>
+
+        <form id = "signin-form">
+            <div class="form-group has-feedback">
+                <input type="text" name="username" class="form-control" placeholder="请输入用户名">
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" name="password" class="form-control" placeholder="请输入密码">
+            </div>
+            <div class="row">
+                <button data-type="signup" type="button" class="btn btn-default  btn-flat pull-right switch-btn">SingUp</button>
+                <button type="submit" class="btn btn-primary  btn-flat pull-right">SignIn</button>
+            </div>
+        </form>
+
+    </div>
+    {{ /if }}
+    <!-- /.form-box -->
+</div>
