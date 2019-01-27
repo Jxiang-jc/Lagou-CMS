@@ -35,7 +35,15 @@ const signup = async ({ username, password, nickname }) => {
 // @param password 是此用户的加密密码
 // :result 是否匹配
 const signin = async (pwd, { password }) => {
+    // console.log('pwd: ', pwd)
+    // console.log('password: ', {password})
+    // npm解释到bcryptjs2.4.0版本后， 不写回掉（即第三个形参）， 会默认返回一个promise对象，因为我们这里用async/await 所以需要返回要给promise对象
     return bcrypt.compare(pwd, password)
+
+    // 正常如下
+    // bcrypt.compare("B4c0/\/", hash, function(err, res) {
+    //     // res === true
+    // });
 }
 
 

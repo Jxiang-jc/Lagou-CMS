@@ -62,7 +62,7 @@ const bindEvent = () => {
                 break;
             default:
                 localStorage.token = _result.data.token
-                window.location.href = "/home";
+                window.location.href = "/";
                 break;
         }
     })

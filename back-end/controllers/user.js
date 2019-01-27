@@ -2,7 +2,7 @@ const user_model = require('../models/user')
 const jwt = require('jsonwebtoken')
 
 const isSignIn = (req, res, next) => {
-   // 判断是否登录 对token解密
+    // 判断是否登录 对token解密, 用中间件处理
 
     res.render('user', {
         code: 200,

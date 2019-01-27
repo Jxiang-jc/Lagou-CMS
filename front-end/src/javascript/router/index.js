@@ -28,7 +28,9 @@ const _init = () => {
 
     // 开始匹配各个路由
     router.route('/home', (req, res, next) => { // 当路由切换进来的时候执行
-        res.render(home_template)
+        debugger
+        console.log('进入/home')
+        res.render(home_template) // res.render 官方解释只会渲染字符串, 因此真正渲染还是要用到art-template
     })
 
     // 404路由
@@ -40,7 +42,6 @@ const _init = () => {
     router.route('*', (req, res, next) => {
         console.log(req.url)
         if (req.url === '') { // 刚进入项目, 没有hash值, 重定向到home
-            console.log(123)
             res.redirect('/home')
         } else { // 如果路径匹配不到的话, 导向404
             res.redirect('/not-found')

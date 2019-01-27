@@ -7,6 +7,7 @@ module.exports = {
     mode: 'development', // 打包模式：production，development，none
     // 入口
     entry: {
+        // 这里的路径我理解是从package.json为起始
         main: ['./src/javascript/index'],
         admin: ['./src/javascript/admin']
     },

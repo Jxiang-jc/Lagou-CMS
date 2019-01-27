@@ -10,14 +10,17 @@ const resApplicationJson = (req, res, next) => {
 // 为/position中所有的路由都使用这个中间件
 router.use(resApplicationJson)
 
+// router.use(auth.userSigninAuth)
 
 /* GET home page. */
+// 第二个形参是中间件
 router.get('/isSignIn', auth.userSigninAuth, user_controller.isSignIn);
 
+// router.get('/isSignIn', user_controller.isSignIn);
 
-router.get('/info', auth.userSigninAuth, user_controller.info);
+// router.get('/info', auth.userSigninAuth, user_controller.info);
 // router.get('/exit', user_controller.exit);
 
-router.get('/check', auth.userSigninAuth, user_controller.check);
+// router.get('/check', auth.userSigninAuth, user_controller.check);
 
 module.exports = router;

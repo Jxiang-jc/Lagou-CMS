@@ -27,4 +27,6 @@ mongoose.connection.on('disconnected', function () {
     console.log('Mongoose connection disconnected');  
 });
 
-module.exports = mongoose;
+
+// 这个文件夹我自己联系的, 没用
+// module.exports = mongoose;
