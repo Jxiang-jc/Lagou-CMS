@@ -52,6 +52,7 @@ const bindEvent = () => {
         })
         // qs.parse 把_params解析成对象的形式
         let _result = await admin_model.signin(qs.parse(_params))
+        console.log('_result: ', _result)
         switch (_result.status) {
             case 203:
                 toast('密码错误');
@@ -61,7 +62,7 @@ const bindEvent = () => {
                 break;
             default:
                 localStorage.token = _result.data.token
-                window.location.href = "/";
+                window.location.href = "/home";
                 break;
         }
     })

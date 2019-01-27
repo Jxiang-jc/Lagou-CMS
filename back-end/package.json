@@ -6,13 +6,15 @@
     "start": "hotnode ./bin/www"
   },
   "dependencies": {
-    "bcrypt": "^3.0.2",
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
     "express-session": "^1.15.6",
     "fs-extra": "^7.0.0",
+    "hotnode": "0.0.8",
     "http-errors": "~1.6.2",
     "jsonwebtoken": "^8.3.0",
     "moment": "^2.22.2",
