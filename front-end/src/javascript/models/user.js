@@ -1,11 +1,9 @@
 // 判断是否登录
 const isSignIn = ({ token }) => {
-    alert(token)
     return $.ajax({
         url: '/api/v1/user/isSignIn',
         data: { token },
         success: results => {
-            // console.log('results666', results)
             return results
         }
     })

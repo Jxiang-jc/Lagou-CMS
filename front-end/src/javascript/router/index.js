@@ -13,6 +13,10 @@ import page_header_controller from '../controllers/page-header'
 // 页面头部数据
 import page_header_model from '../models/page-header'
 
+// map 控制器
+import map_controler from '../controllers/map'
+
+
 var router = null
 
 // 记录上一次路由跳转的url
@@ -28,10 +32,12 @@ const _init = () => {
 
     // 开始匹配各个路由
     router.route('/home', (req, res, next) => { // 当路由切换进来的时候执行
-        debugger
-        console.log('进入/home')
+
         res.render(home_template) // res.render 官方解释只会渲染字符串, 因此真正渲染还是要用到art-template
     })
+
+    // 地图
+    router.route('/map', map_controler.map)
 
     // 404路由
     router.route('/not-found', (req, res, next) => { // 当路由切换进来的时候执行
@@ -48,17 +54,31 @@ const _init = () => {
         }
     })
 
+    // 给按钮添加事件
+    _navLink()
+
 }
 
-const renderPageHeader = (req, res, next) => { // 这里的prevUrl就是上一次的URL
+// 渲染页面头部
+const renderPageHeader = (req, res, next) => {
+    // 这里的prevUrl就是上一次的URL
     page_header_controller.render(page_header_model.pageHeaderInfo(req.url, prevUrl))
-
-    // 已经进入到当前路由了， 将上一次的路由改成当前的路由
+    // 已经进入到当前路由了，将上一次路由改成当前的路由
     prevUrl = req.url
-    
+}
+
+// 给导航按钮添加点击事件
+const _navLink = (selector) => {
+    let $navs = $(selector || '.sidebar-menu li.nav-link[to]')
+
+    $navs.on('click', function () {
+        let _path = $(this).attr('to')
+        router.go(_path)
+    })
 }
 
 
 export default {
-    init: _init
+    init: _init,
+    navLink: _navLink
 }

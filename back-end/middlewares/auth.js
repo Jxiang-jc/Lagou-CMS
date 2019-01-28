@@ -3,23 +3,23 @@ const fs = require('fs')
 const PATH = require('path')
 const userSigninAuth = (req, res, next) => {
     try {
-        console.log(6666)
         let _public = fs.readFileSync(PATH.resolve(__dirname, '../keys/public.key'))
         // console.log('_public: ', _public)
-        console.log(req.query)
 
         let decoded = jwt.verify(req.query.token, _public, {
             algorithms: 'RS256'
         })
 
-        console.log('decoded: ', decoded)
+        // console.log('decoded: ', decoded)
+        // decoded:  { userid: '5c4c77f55a5a601dac7be511',
+        //             username: 'zjx',
+        //             level: 8,
+        //             iat: 1548595407 }
 
         // var decoded = jwt.verify(req.query.token, 'i love u'); 
         let _time = (Date.now() / 1000) - decoded.iat
         let _expires = 30
-        console.log('_time: ', _time)
         if (_time > _expires) {
-            console.log('过期了??')
             res.render('user', {
                 code: 403,
                 data: JSON.stringify({
@@ -28,7 +28,7 @@ const userSigninAuth = (req, res, next) => {
             })
         } else {
             req.token = decoded
-            console.log('登录成功, 执行next')
+            console.log('中间件验证token成功, 执行next')
             next()
         }
     } catch (err) {

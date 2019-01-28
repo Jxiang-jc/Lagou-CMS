@@ -6,7 +6,7 @@
     <li>
         <a href="#/home">首页</a>
     </li>
-    <% for (var i = 0; i < list.length; i++) { &>
+    <% for (var i = 0; i < list.length; i++) { %>
         <li class="<%= i === (list.length-1) ? 'active' : '' %>">
             <a href="<%= list[i].path ? list[i].path : 'javascript:viod(0)' %>">
                 {{ list[i].text }}

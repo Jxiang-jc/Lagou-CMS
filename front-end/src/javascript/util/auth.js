@@ -7,12 +7,11 @@ import user_model from '../models/user'
 const userSigninAuth = async () => {
     let _token = localStorage.getItem('token') || ''
 
-    console.log('_token', _token)
     let isSignIn = await user_model.isSignIn({
         token: _token
     })
 
-    console.log('isSignIn: ' + isSignIn)
+    // console.log('isSignIn: ' + isSignIn)
 
     // !! 用来判断isSignIn.status有实际含义的变量才执行的方法, 如果isSignIn.status是undefined, !undefined就是true, !!undefined就是false
     // 也可以理解为一下的简写:

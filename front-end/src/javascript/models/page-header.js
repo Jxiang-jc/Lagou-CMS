@@ -5,6 +5,7 @@ const pageHeaderInfo = (url, prevUrl) => {
     let _urlInfo = URL.parse(url) // 解析URL字符串并返回URL对象
 
     let _pathname = _urlInfo.pathname
+    // let _pathname = '/position-list'
 
     // search? 是url中解析出来的 ？a=1&b=2&search
     // 然后url.parse将其转化为对象的形式
