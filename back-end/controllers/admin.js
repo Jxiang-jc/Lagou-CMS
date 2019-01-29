@@ -25,7 +25,7 @@ const signin = async (req, res, next) => {
     // 先判断有没有这个用户 
     let _judge_result = await admin_model.judgeUserByUsername(req.body.username)
 
-    console.log('_judge_result: ', _judge_result)
+    // console.log('_judge_result: ', _judge_result)
     
     if ( !!_judge_result.length ) { // 如果有这个用户
         // 登录

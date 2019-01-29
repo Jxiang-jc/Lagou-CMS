@@ -30,7 +30,7 @@ module.exports = {
         open: true, // 自动打开浏览器
         proxy: { // 代理api请求到api server
             '/api': {
-                target: 'http://localhost:9999',
+                target: 'http://localhost:1239',
                 changeOrigin: true
             }
         }

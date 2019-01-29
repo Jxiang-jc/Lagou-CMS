@@ -12,7 +12,7 @@ var positionRouter = require('./routes/position');
 var adminRouter = require('./routes/admin');
 var userRouter = require('./routes/user');
 
-// 应用程序
+// 应用程序 
 var app = express();
 
 // view engine setup

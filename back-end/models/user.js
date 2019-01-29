@@ -7,7 +7,7 @@ const getUserInfoById = (id) => {
     return UsersModel
     .findById(id)
     .then(results => {
-        console.log(results)
+        // console.log(results)
         return results
     })
     .catch(err => {

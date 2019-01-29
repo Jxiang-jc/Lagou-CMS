@@ -28,7 +28,7 @@ const userSigninAuth = (req, res, next) => {
             })
         } else {
             req.token = decoded
-            console.log('中间件验证token成功, 执行next')
+            // console.log('中间件验证token成功, 执行next')
             next()
         }
     } catch (err) {

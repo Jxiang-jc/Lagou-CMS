@@ -12,7 +12,7 @@ var http = require('http');
  * Get port from environment and store in Express.
  */
 // 端口
-var port = normalizePort(process.env.PORT || '9999');
+var port = normalizePort(process.env.PORT || '1239');
 //设置端口
 app.set('port', port);
 
@@ -26,7 +26,9 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, () => {
+  console.log('www is running on http://localhost:' + port)
+});
 server.on('error', onError);
 server.on('listening', onListening);
 

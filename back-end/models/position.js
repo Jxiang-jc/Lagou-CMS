@@ -26,7 +26,7 @@ const listall = (_query = {}) => {
 // 返回列表数据
 const list = async ({ pageNo = 1, pageSize = 10, search = ''}) => {
     let reg = new RegExp(search, 'g')
-    console.log(reg.test(search),search)
+    // console.log(reg.test(search),search)
     let _query = { // 匹配各个字段值只要有一个字段含有关键字
         $or: [
             { companyName: reg },   
