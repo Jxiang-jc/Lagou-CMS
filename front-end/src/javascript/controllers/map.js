@@ -12,6 +12,7 @@ const map = async (req, res) => {
     if (_can.status === 403) {
         alert('登陆后操作')
         window.location.href = '/admin.html'
+        
         return false
     }
 
