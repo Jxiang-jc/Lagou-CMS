@@ -17,7 +17,7 @@ const userSigninAuth = (req, res, next) => {
         //             iat: 1548595407 }
 
         // var decoded = jwt.verify(req.query.token, 'i love u'); 
-        let _time = (Date.now() / 1000) - decoded.iat
+        let _time = (Date.now() / 10000000) - decoded.iat
         let _expires = 30
         if (_time > _expires) {
             res.render('user', {

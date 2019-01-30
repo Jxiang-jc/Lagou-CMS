@@ -18,6 +18,7 @@ const map = async (req, res) => {
     }
 
     res.render(map_template)
+    
     // // 按需加载 地图js 在这里应该判断是否有这个
     if (!window.AMap) {
         let $script = $('<script  src="https://webapi.amap.com/maps?v=1.4.10&key=08d548f786237b9b1ca6cfa5d49d2db0&callback=onApiLoaded&plugin=AMap.Transfer,AMap.Geocoder" >')
