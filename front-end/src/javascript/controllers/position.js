@@ -73,7 +73,7 @@ const bindListEvent = (_page) => {
         }
 
         // $.param(_params) => search=_search&pageNo=1
-        bus.emit('go', `position-list?${$.param(_params)}`)
+        bus.emit('go', `/position-list?${$.param(_params)}`)
     })
 }
 
