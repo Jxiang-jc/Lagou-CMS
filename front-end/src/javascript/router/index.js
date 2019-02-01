@@ -19,6 +19,13 @@ import map_controler from '../controllers/map'
 // position 控制器
 // 正常而言, 不应该在路由中写逻辑, 否则route的代码会十分冗余
 import position_controller from '../controllers/position'
+
+// 引入echart视图
+import chart_controller from '../controllers/chart'
+
+// 引入sidebar-nav逻辑
+import siderbar_nav_controller from '../controllers/siderbar-nav'
+
 import { bus } from '../util';
 
 // 官方demo用法..
@@ -30,7 +37,7 @@ var prevUrl = ''
 // 启动路由的方法
 const _init = () => {
     // 实例化路由工具
-    router = new SMERouter('router-view')
+    router = new SMERouter('routers-view')
 
     // 中间件会先执行, 为导航按钮添加高亮样式
     // 中间件只有一个参数, 那就是req
@@ -40,6 +47,7 @@ const _init = () => {
 
     // 保证都都匹配到， 中间都能执行
     router.route('/', renderPageHeader)
+    // router.route('/', siderbar_nav_controller.sidebar)
 
     // 开始匹配各个路由
     router.route('/home', (req, res, next) => { // 当路由切换进来的时候执行
@@ -59,10 +67,12 @@ const _init = () => {
     // 更新职位路由
     router.route('/position-update', position_controller.update)
 
+    // echart图表路由
+    router.route('/chart', chart_controller.areaChart)
+
     // 404路由
     router.route('/not-found', (req, res, next) => { // 当路由切换进来的时候执行
         res.render(not_found_template)
-        _navLink('.not-found a[to]')
     })
 
     // 上面的没有匹配到就会跳转404路由或者首页
@@ -83,9 +93,6 @@ const _init = () => {
 
     bus.on('back', () => router.back())
 
-    // 给按钮添加事件
-    _navLink()
-
 }
 
 // 渲染页面头部
@@ -96,15 +103,6 @@ const renderPageHeader = (req, res, next) => {
     prevUrl = req.url
 }
 
-// 给导航按钮添加点击事件
-const _navLink = (selector) => {
-    let $navs = $(selector || '.sidebar-menu li.nav-link[to]')
-
-    $navs.on('click', function () {
-        let _path = $(this).attr('to')
-        router.go(_path)
-    })
-}
 
 // 给导航按钮添加不同的类名
 // @para route 当前路由的hash值
@@ -117,6 +115,5 @@ const _activeLink = (route) => {
 
 
 export default {
-    init: _init,
-    navLink: _navLink
+    init: _init
 }

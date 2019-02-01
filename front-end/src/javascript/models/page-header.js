@@ -24,8 +24,8 @@ const pageHeaderInfo = (url, prevUrl) => {
 
     // search? 是url中解析出来的 ？a=1&b=2&search
     // 然后url.parse将其转化为对象的形式
-    let _search = URL.parse(prevUrl).search
-    console.log('_search: ', _search);
+    let _search = URL.parse(prevUrl).search || ''
+    // console.log('_search: ', _search);
     
     let _infos = {
         '/home': {
