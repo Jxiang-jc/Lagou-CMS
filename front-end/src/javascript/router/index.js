@@ -34,7 +34,7 @@ var prevUrl = ''
 // 启动路由的方法
 const _init = () => {
     // 实例化路由工具
-    router = new SMERouter('routers-view')
+    router = new SMERouter('router-view')
 
     // 中间件会先执行, 为导航按钮添加高亮样式
     // 中间件只有一个参数, 那就是req

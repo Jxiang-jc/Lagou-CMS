@@ -18,14 +18,18 @@ import sidebar_nav_template from './views/sidebar-nav.html'
 // 侧边栏控制器
 import isdebar_nav_controller from './controllers/siderbar-nav'
 
+$('#wrapper').html(body_template)
+
 // 渲染html结构
-const renderBody = () => {
+// const renderBody = () => {
 
-    $('#wrapper').html(body_template)
+//     $('#wrapper').html(body_template)
 
-    renderSidebar()
-}
+//     renderSidebar()
 
+// }
+
+// 渲染侧边栏
 const renderSidebar = () => {
     // 需要等body模板渲染完成才能渲染侧边栏
     if ($('#wrapper #sidebar-nav')) {
@@ -39,10 +43,9 @@ const renderSidebar = () => {
         renderBody()
 }
 
+// 初始化
 let init = async () => { 
-    // 渲染html结构
-    renderBody()
-
+    // 判断是否有token, 有的话, 直接登录
     let isSignIn = await userSigninAuth()
 
     console.log('isSignIn: ', isSignIn)
@@ -52,13 +55,17 @@ let init = async () => {
         $('#wrapper').removeClass('hidden')
 
         router.init()
-
+        debugger
+        // 获取用户信息
         user_controller.renderUserInfo()
     } else {
         
         window.location.href = '/admin.html'
     }
 }
+// 渲染html结构
+// 如果放在await后渲染, 会有bug 
+// renderBody()
 
 init()
 

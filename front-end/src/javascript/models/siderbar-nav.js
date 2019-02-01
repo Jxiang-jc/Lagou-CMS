@@ -31,13 +31,13 @@ const sidebarNav = () => {
             {
                 title: '地图',
                 path: '/map',
-                iconName: 'fa fa-link',
+                iconName: 'fa fa-map-marker',
                 className: 'nav-link'
             },
             {
                 title: 'charts',
                 path: '/chart',
-                iconName: 'fa fa-link',
+                iconName: 'fa fa-area-chart',
                 className: 'nav-link'
             }
         ]

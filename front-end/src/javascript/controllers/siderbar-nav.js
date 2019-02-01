@@ -15,9 +15,9 @@ const sidebar = async () => {
 }
 
 /**
- * [ 递归渲染sidebar]
- * @param {object} data [ model返回的数据]
- * @param {node} $fatherUl [ ul容器]
+ * [递归渲染sidebar]
+ * @param {object} data [model返回的数据]
+ * @param {node} $fatherUl [ul容器]
  * @return {HTML DOM} [返回html结构]
  */
 

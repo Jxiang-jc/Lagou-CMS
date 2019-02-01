@@ -161,7 +161,6 @@ const update = async (req, res) => {
 const bindUpdateEvent = () => {
     // 返回按钮逻辑
     $('.position-update #back').on('click', () => {
-        console.log('back')
         bus.emit('go', '/position-list')
     })
 
@@ -174,6 +173,7 @@ const handleUpdateSubmit = async function (e) {
 
     let _results = await position_model.update()
     handleToastByData(_results, {
+        // 是否反应, 可以理解为是否跳转
         isReact: true,
         success: () => {
             bus.emit('go', '/position-list')
