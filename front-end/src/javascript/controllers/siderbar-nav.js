@@ -1,12 +1,10 @@
-import sidebar_nav_template from '../views/sidebar-nav.html'
 
 import sidebar_nav_models from '../models/siderbar-nav'
 
 // 引入bus
 import bus from '../util/bus'
 
-
-const sidebar = async (req, res, next) => {
+const sidebar = async () => {
     let data = await sidebar_nav_models.sidebarNav() || {}
 
     // 通过遍历每一项然后传进去渲染
@@ -16,11 +14,10 @@ const sidebar = async (req, res, next) => {
     _navLink()
 }
 
-// 递归数据
 /**
- * [递归渲染sidebar]
- * @param {object} data [model返回的数据]
- * @param {node} $fatherUl [ul容器]
+ * [ 递归渲染sidebar]
+ * @param {object} data [ model返回的数据]
+ * @param {node} $fatherUl [ ul容器]
  * @return {HTML DOM} [返回html结构]
  */
 

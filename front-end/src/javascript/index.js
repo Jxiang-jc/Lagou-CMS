@@ -29,29 +29,29 @@ const renderBody = () => {
 const renderSidebar = () => {
     // 需要等body模板渲染完成才能渲染侧边栏
     if ($('#wrapper #sidebar-nav')) {
-        $('#wrapper #sidebar-nav').html(sidebar_nav_template)
 
         // 渲染侧边栏
         isdebar_nav_controller.sidebar()
 
-        router.init()
+        $('#wrapper #sidebar-nav').html(sidebar_nav_template)
+
     } else
         renderBody()
 }
 
 let init = async () => { 
+    // 渲染html结构
+    renderBody()
+
     let isSignIn = await userSigninAuth()
 
     console.log('isSignIn: ', isSignIn)
-    // let isSignIn = true
 
     if (isSignIn) {
+        // adminLTE自带
         $('#wrapper').removeClass('hidden')
 
-        // 渲染html结构
-        renderBody()
-
-        
+        router.init()
 
         user_controller.renderUserInfo()
     } else {
@@ -61,3 +61,5 @@ let init = async () => {
 }
 
 init()
+
+    

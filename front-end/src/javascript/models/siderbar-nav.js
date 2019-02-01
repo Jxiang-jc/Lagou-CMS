@@ -33,6 +33,12 @@ const sidebarNav = () => {
                 path: '/map',
                 iconName: 'fa fa-link',
                 className: 'nav-link'
+            },
+            {
+                title: 'charts',
+                path: '/chart',
+                iconName: 'fa fa-link',
+                className: 'nav-link'
             }
         ]
     }

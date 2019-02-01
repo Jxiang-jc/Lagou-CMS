@@ -23,9 +23,6 @@ import position_controller from '../controllers/position'
 // 引入echart视图
 import chart_controller from '../controllers/chart'
 
-// 引入sidebar-nav逻辑
-import siderbar_nav_controller from '../controllers/siderbar-nav'
-
 import { bus } from '../util';
 
 // 官方demo用法..
@@ -47,7 +44,6 @@ const _init = () => {
 
     // 保证都都匹配到， 中间都能执行
     router.route('/', renderPageHeader)
-    // router.route('/', siderbar_nav_controller.sidebar)
 
     // 开始匹配各个路由
     router.route('/home', (req, res, next) => { // 当路由切换进来的时候执行
@@ -88,7 +84,7 @@ const _init = () => {
     // 因为在控制器中无法使用到router, 所以给bus绑定事件, 在其他模块中触发bus的事件
     bus.on('go', (path, body={}) => {
         router.go(path, body)
-        debugger
+        // debugger
     })
 
     bus.on('back', () => router.back())
