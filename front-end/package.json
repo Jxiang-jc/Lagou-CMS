@@ -39,6 +39,7 @@
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "jquery": "^3.3.1",
+    "mddir": "^1.1.1",
     "sme-router": "^0.12.8"
   },
   "author": "Jxiang",

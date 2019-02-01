@@ -6,13 +6,29 @@
     <li>
         <a href="#/home">首页</a>
     </li>
-    <!-- {{ if list}} -->
+    <!-- 首页list.length为0, 所以需要判断一下  -->
+    {{ if list}}
         <% for (var i = 0; i < list.length; i++) { %>
-            <li class="<%= i === (list.length-1) ? 'active' : '' %>">
-                <a href="<%= list[i].path ? list[i].path : 'javascript:void(0)' %>">
+            {{ if i === (list.length-1) }}
+                <li class="active">
                     {{ list[i].text }}
-                </a>
-            </li>
+
+                </li>
+                {{ else }}
+                <li>
+                    <a href="<%= list[i].path ? list[i].path : 'javascript:void(0)' %>">
+                        {{ list[i].text }}
+                    </a>
+                </li>
+            {{ /if }}
         <% } %>
-    <!-- {{ /if }} -->
+    {{ /if }}
 </ol>
+
+<!-- 
+
+    art-template 支持标准语法与原始语法。标准语法可以让模板易读写，而原始语法拥有强大的逻辑表达能力。
+
+    标准语法支持基本模板语法以及基本 JavaScript 表达式；原始语法支持任意 JavaScript 语句，这和 EJS 一样。
+
+ -->

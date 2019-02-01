@@ -19,6 +19,10 @@ import map_controler from '../controllers/map'
 // position 控制器
 // 正常而言, 不应该在路由中写逻辑, 否则route的代码会十分冗余
 import position_controller from '../controllers/position'
+
+// 引入echart视图
+import chart_controller from '../controllers/chart'
+
 import { bus } from '../util';
 
 // 官方demo用法..
@@ -59,10 +63,12 @@ const _init = () => {
     // 更新职位路由
     router.route('/position-update', position_controller.update)
 
+    // echart图表路由
+    router.route('/chart', chart_controller.areaChart)
+
     // 404路由
     router.route('/not-found', (req, res, next) => { // 当路由切换进来的时候执行
         res.render(not_found_template)
-        _navLink('.not-found a[to]')
     })
 
     // 上面的没有匹配到就会跳转404路由或者首页
@@ -78,12 +84,10 @@ const _init = () => {
     // 因为在控制器中无法使用到router, 所以给bus绑定事件, 在其他模块中触发bus的事件
     bus.on('go', (path, body={}) => {
         router.go(path, body)
+        // debugger
     })
 
     bus.on('back', () => router.back())
-
-    // 给按钮添加事件
-    _navLink()
 
 }
 
@@ -95,15 +99,6 @@ const renderPageHeader = (req, res, next) => {
     prevUrl = req.url
 }
 
-// 给导航按钮添加点击事件
-const _navLink = (selector) => {
-    let $navs = $(selector || '.sidebar-menu li.nav-link[to]')
-
-    $navs.on('click', function () {
-        let _path = $(this).attr('to')
-        router.go(_path)
-    })
-}
 
 // 给导航按钮添加不同的类名
 // @para route 当前路由的hash值
@@ -116,6 +111,5 @@ const _activeLink = (route) => {
 
 
 export default {
-    init: _init,
-    navLink: _navLink
+    init: _init
 }

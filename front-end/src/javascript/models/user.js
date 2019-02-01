@@ -21,6 +21,14 @@ const info = (_data) => {
     })
 }
 
+// 退出
+const exit = () => {
+    return $.ajax({
+        url: '/api/v1/user/exit',
+        success: results => results
+    })
+}
+
 /**
  * [是否有权限查看模块(eg.地图)]
  * @param {string} auth [需要认证的模块]
@@ -39,5 +47,6 @@ const allow = (auth) => {
 export default {
     isSignIn,
     info,
+    exit,
     allow
 }
