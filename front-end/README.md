@@ -8,7 +8,7 @@
 
 ```bash
 # Clone project
-git clone https://github.com/PanJiaChen/vue-admin-template.git
+git clone git@github.com:Jxiang-jc/Lagou-CMS.git
 
 # Install dependencies
 npm install
